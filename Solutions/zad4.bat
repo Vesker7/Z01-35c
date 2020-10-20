@@ -1,5 +1,6 @@
 @echo off
 if %1 LSS 1 (exit /b)
+if %1 EQU 1 (echo 1 & exit /b)
 
 setlocal enabledelayedexpansion
 
