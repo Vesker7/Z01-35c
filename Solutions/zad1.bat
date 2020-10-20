@@ -1,7 +1,3 @@
 @echo off
 
-if not exist %1 goto :notex
-dir %1\*%2
-goto :eof
-:notex
-echo "Directory doesnt exist!"
+if exist %1 (dir %1\*%2) else (echo "Directory doesnt exist!")
