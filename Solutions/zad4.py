@@ -45,8 +45,8 @@ def game(games):
     print("Koniec gry!\nTwoje statystyki:\nRozegrane gry: {}\nWygrane: {}\nRemisy: {}\nPrzegrane: {}\n".format(games,
                                                                                                                stats[0],
                                                                                                                stats[1],
-                                                                                                               stats[
-                                                                                                                   2]))
+                                                                                                               stats[2]))
+    
     if stats[0] > stats[2]:
         print("WYGRAŁEŚ!")
     elif stats[2] > stats[0]:
