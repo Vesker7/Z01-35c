@@ -428,8 +428,8 @@
                 "tags": [
                     "Messages"
                 ],
-                "description": "Gets all messages sender to an user from specific user",
-                "summary": "Gets all messages sender to an user from specific user",
+                "description": "Gets all global chat messages",
+                "summary": "Gets all global chat messages",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -507,7 +507,7 @@
                 "produces": [
                     "application/vnd.api+json"
                 ],
-                "operationId": "Getsallmessagessendertoanuserfromspecificuser_1"
+                "operationId": "Getsallglobalchatmessages_0"
             }
         },
         "/Messages/sendMessage": {
