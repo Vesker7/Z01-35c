@@ -90,8 +90,8 @@ class User(SAFRSBase, database.Model):
     @jsonapi_rpc(http_methods=['POST'])
     def register(cls, username, password):
         """
-            description: Log out user
-            summary: Log out user
+            description: Register new user
+            summary: Register new user
             args:
                 username: username
                 password: password
@@ -276,8 +276,8 @@ class Message(SAFRSBase, database.Model):
     @jsonapi_rpc(http_methods=['GET'])
     def getGlobalChat(cls):
         """
-            description: Gets all messages sender to an user from specific user
-            summary: Gets all messages sender to an user from specific user
+            description: Gets all global chat messages
+            summary: Gets all global chat messages
             responses:
                 200:
                     description: OK
