@@ -359,8 +359,8 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Log out user",
-                "summary": "Log out user",
+                "description": "Register new user",
+                "summary": "Register new user",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -397,7 +397,7 @@
                     {
                         "name": "post_User_register",
                         "in": "body",
-                        "description": "Log out user",
+                        "description": "Register new user",
                         "schema": {
                             "$ref": "#/definitions/post_User_register"
                         },
@@ -407,7 +407,7 @@
                 "produces": [
                     "application/vnd.api+json"
                 ],
-                "operationId": "Logoutuser_1"
+                "operationId": "Registernewuser_0"
             }
         },
         "/Users/userList": {
