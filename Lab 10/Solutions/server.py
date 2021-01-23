@@ -183,9 +183,8 @@ class Message(SAFRSBase, database.Model):
                 sender: sender
                 text: text
         """
-        sentDate = datetime().now().strftime("%d.%m.%y, %H:%M")
+        sentDate = datetime.now().strftime("%d.%m.%y, %H:%M")
         message = Message(sender=sender, to="everyone", text=text, sent=sentDate)
-        database.session.add(message)
         database.session.commit()
         socketio.emit("everyone")
         return {"result": "success"}
@@ -201,9 +200,9 @@ class Message(SAFRSBase, database.Model):
                 to: to
                 text: text
         """
-        sentDate = datetime().now().strftime("%d.%m.%y, %H:%M")
+        sentDate = datetime.now().strftime("%d.%m.%y, %H:%M")
+        print(sentDate)
         message = Message(sender=sender, to=to, text=text, sent=sentDate)
-        database.session.add(message)
         database.session.commit()
         socketio.emit("message", {"sender": sender, "to": to})
         return {"result": "success"}
@@ -231,6 +230,8 @@ class Message(SAFRSBase, database.Model):
                                         items:
                                             type: object
                                             properties:
+                                                id:
+                                                    type: integer
                                                 sender:
                                                     type: string
                                                 to:
@@ -249,12 +250,14 @@ class Message(SAFRSBase, database.Model):
             newMessageRead = False
             for message in database.session.query(Message).filter_by(sender=user1, to=user2).all():
                 if message.read == "" and message.to == username:
-                    read = datetime().now().strftime("%d.%m.%y, %H:%M")
+                    read = datetime.now().strftime("%d.%m.%y, %H:%M")
+                    message.read = read
                     newMessageRead = True
                 else:
                     read = message.read
 
                 tmp = {
+                    "id": message.id,
                     "sender": message.sender,
                     "to": message.to,
                     "text": message.text,
@@ -264,6 +267,7 @@ class Message(SAFRSBase, database.Model):
                 result["messages"].append(tmp)
 
             if newMessageRead:
+                database.session.commit()
                 socketio.emit("read", {"sender": chat_with, "to": username})
 
         checkOneSideMsg(username, chat_with)
@@ -292,6 +296,8 @@ class Message(SAFRSBase, database.Model):
                                         items:
                                             type: object
                                             properties:
+                                                id:
+                                                    type: integer
                                                 sender:
                                                     type: string
                                                 to:
@@ -308,6 +314,7 @@ class Message(SAFRSBase, database.Model):
 
         for message in database.session.query(Message).filter_by(to="everyone").order_by("id").all():
             tmp = {
+                "id": message.id,
                 "sender": message.sender,
                 "to": message.to,
                 "text": message.text,
