@@ -1,0 +1,1018 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Chat application",
+        "description": "SAFRSAPI",
+        "termsOfService": "",
+        "version": "0.0"
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/api",
+    "paths": {
+        "/Users/": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Retrieve a collection of User objects",
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User relationships to include (csv)"
+                    },
+                    {
+                        "default": "username,password,status",
+                        "type": "string",
+                        "name": "fields[User]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User fields to include (csv)"
+                    },
+                    {
+                        "default": 0,
+                        "type": "integer",
+                        "name": "page[offset]",
+                        "in": "query",
+                        "format": "int64",
+                        "required": false,
+                        "description": "Page offset"
+                    },
+                    {
+                        "default": 10,
+                        "type": "integer",
+                        "name": "page[limit]",
+                        "in": "query",
+                        "format": "int64",
+                        "required": false,
+                        "description": "Max number of items"
+                    },
+                    {
+                        "default": "username,password,status,id",
+                        "type": "string",
+                        "name": "sort",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Sort order"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[username]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "username attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[password]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "password attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[status]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "status attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[id]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "id attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Custom User filter"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/User_coll"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "description": "Retrieve User from Users",
+                "operationId": "RetrieveacollectionofUserobjects_0"
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create User",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    },
+                    {
+                        "name": "POST body",
+                        "in": "body",
+                        "description": "User attributes",
+                        "schema": {
+                            "$ref": "#/definitions/User_inst1"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_409"
+                        }
+                    },
+                    "201": {
+                        "schema": {
+                            "$ref": "#/definitions/User_inst"
+                        },
+                        "description": "Created"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "CreateUser_0"
+            }
+        },
+        "/Users/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Log in user",
+                "summary": "Log in user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_User_login",
+                        "in": "body",
+                        "description": "Log in user",
+                        "schema": {
+                            "$ref": "#/definitions/post_User_login"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Loginuser_0"
+            }
+        },
+        "/Users/logout": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Log out user",
+                "summary": "Log out user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_User_logout",
+                        "in": "body",
+                        "description": "Log out user",
+                        "schema": {
+                            "$ref": "#/definitions/post_User_logout"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Logoutuser_0"
+            }
+        },
+        "/Users/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Log out user",
+                "summary": "Log out user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_User_register",
+                        "in": "body",
+                        "description": "Log out user",
+                        "schema": {
+                            "$ref": "#/definitions/post_User_register"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Logoutuser_1"
+            }
+        },
+        "/Users/userList": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Return list of chat application users",
+                "summary": "Return list of chat application users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "users": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "username": {
+                                                                "type": "string"
+                                                            },
+                                                            "status": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User relationships to include (csv)"
+                    },
+                    {
+                        "default": "username,password,status",
+                        "type": "string",
+                        "name": "fields[User]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User fields to include (csv)"
+                    },
+                    {
+                        "name": "varargs",
+                        "in": "query",
+                        "description": "userList arguments",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Returnlistofchatapplicationusers_0"
+            }
+        },
+        "/Users/{UserId}/": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Retrieve User instance",
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User relationships to include (csv)"
+                    },
+                    {
+                        "default": "username,password,status",
+                        "type": "string",
+                        "name": "fields[User]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "User fields to include (csv)"
+                    },
+                    {
+                        "name": "UserId",
+                        "in": "path",
+                        "type": "string",
+                        "default": "jsonapi_id_string",
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/User_inst"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "description": "Retrieve User from Users",
+                "operationId": "RetrieveUserinstance_0"
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "UserId",
+                        "in": "path",
+                        "type": "string",
+                        "default": "jsonapi_id_string",
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    },
+                    {
+                        "name": "PATCH body",
+                        "in": "body",
+                        "description": "User attributes",
+                        "schema": {
+                            "$ref": "#/definitions/User_inst"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_409"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/User_inst"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "summary": "Update User",
+                "description": "Update User attributes",
+                "operationId": "UpdateUser_0"
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "UserId",
+                        "in": "path",
+                        "type": "string",
+                        "default": "jsonapi_id_string",
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "204": {
+                        "description": "Request fulfilled, nothing follows"
+                    },
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/User_inst"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "summary": "Delete User from Users",
+                "operationId": "DeleteUserfromUsers_0"
+            }
+        }
+    },
+    "definitions": {
+        "post_User_login": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/User_login"
+                }
+            },
+            "description": ""
+        },
+        "User_login": {
+            "properties": {
+                "method": {
+                    "example": "login",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "username": "username",
+                        "password": "password"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_User_logout": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/User_logout"
+                }
+            },
+            "description": ""
+        },
+        "User_logout": {
+            "properties": {
+                "method": {
+                    "example": "logout",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "username": "username"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_User_register": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/User_register"
+                }
+            },
+            "description": ""
+        },
+        "User_register": {
+            "properties": {
+                "method": {
+                    "example": "register",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "username": "username",
+                        "password": "password"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_User_userList": {
+            "properties": {},
+            "description": ""
+        },
+        "jsonapi_error_403": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Request forbidden -- authorization will not help",
+                            "detail": "",
+                            "code": "403"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_404": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Nothing matches the given URI",
+                            "detail": "",
+                            "code": "404"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "User_coll1": {
+            "properties": {
+                "data": {
+                    "example": [
+                        {
+                            "attributes": {
+                                "username": "",
+                                "password": "",
+                                "status": "Offline"
+                            },
+                            "type": "User",
+                            "id": "jsonapi_id_string",
+                            "relationships": {}
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": "User get;"
+        },
+        "jsonapi_error_405": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Specified method is invalid for this resource",
+                            "detail": "",
+                            "code": "405"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_400": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Bad request syntax or unsupported method",
+                            "detail": "",
+                            "code": "400"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_500": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Server got itself in trouble",
+                            "detail": "",
+                            "code": "500"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "User_inst1": {
+            "properties": {
+                "data": {
+                    "example": {
+                        "attributes": {
+                            "username": "",
+                            "password": "",
+                            "status": "Offline"
+                        },
+                        "type": "User"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": "User post;"
+        },
+        "jsonapi_error_409": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Request conflict",
+                            "detail": "",
+                            "code": "409"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "User_inst": {
+            "properties": {
+                "data": {
+                    "example": {
+                        "attributes": {
+                            "username": "",
+                            "password": "",
+                            "status": "Offline"
+                        },
+                        "type": "User",
+                        "id": "jsonapi_id_string"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": "User patch;User post;User delete;User options;User patch;User post;User delete;User options;"
+        },
+        "Invoke _User_login": {
+            "properties": {}
+        },
+        "options_User_login": {
+            "properties": {}
+        },
+        "Invoke _User_logout": {
+            "properties": {}
+        },
+        "options_User_logout": {
+            "properties": {}
+        },
+        "Invoke _User_register": {
+            "properties": {}
+        },
+        "options_User_register": {
+            "properties": {}
+        },
+        "Invoke _User_userList": {
+            "properties": {}
+        },
+        "options_User_userList": {
+            "properties": {}
+        },
+        "User_coll": {
+            "properties": {
+                "data": {
+                    "example": [
+                        {
+                            "attributes": {
+                                "username": "",
+                                "password": "",
+                                "status": "Offline"
+                            },
+                            "type": "User",
+                            "id": "jsonapi_id_string"
+                        }
+                    ],
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "description": "Chat application User model",
+            "name": "Users"
+        }
+    ]
+}
