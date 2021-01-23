@@ -1,0 +1,1113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Chat application",
+        "description": "SAFRSAPI",
+        "termsOfService": "",
+        "version": "0.0"
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/api",
+    "paths": {
+        "/Messages/": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Retrieve a collection of Message objects",
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message relationships to include (csv)"
+                    },
+                    {
+                        "default": "sender,to,text,sent,read",
+                        "type": "string",
+                        "name": "fields[Message]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message fields to include (csv)"
+                    },
+                    {
+                        "default": 0,
+                        "type": "integer",
+                        "name": "page[offset]",
+                        "in": "query",
+                        "format": "int64",
+                        "required": false,
+                        "description": "Page offset"
+                    },
+                    {
+                        "default": 10,
+                        "type": "integer",
+                        "name": "page[limit]",
+                        "in": "query",
+                        "format": "int64",
+                        "required": false,
+                        "description": "Max number of items"
+                    },
+                    {
+                        "default": "sender,to,text,sent,read,id",
+                        "type": "string",
+                        "name": "sort",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Sort order"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[sender]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "sender attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[to]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "to attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[text]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "text attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[sent]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "sent attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[read]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "read attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter[id]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "id attribute filter (csv)"
+                    },
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "filter",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Custom Message filter"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Message_coll"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "description": "Retrieve Message from Messages",
+                "operationId": "RetrieveacollectionofMessageobjects_0"
+            },
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Create Message",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    },
+                    {
+                        "name": "POST body",
+                        "in": "body",
+                        "description": "Message attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst1"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_409"
+                        }
+                    },
+                    "201": {
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst"
+                        },
+                        "description": "Created"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "CreateMessage_0"
+            }
+        },
+        "/Messages/broadcastMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Sends message to all chat application users",
+                "summary": "Sends message to all chat application users",
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_Message_broadcastMessage",
+                        "in": "body",
+                        "description": "Sends message to all chat application users",
+                        "schema": {
+                            "$ref": "#/definitions/post_Message_broadcastMessage"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Sendsmessagetoallchatapplicationusers_0"
+            }
+        },
+        "/Messages/countUnreadMessages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Returns count of unread messages from specific user",
+                "summary": "Returns count of unread messages from specific user",
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message relationships to include (csv)"
+                    },
+                    {
+                        "default": "sender,to,text,sent,read",
+                        "type": "string",
+                        "name": "fields[Message]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message fields to include (csv)"
+                    },
+                    {
+                        "name": "varargs",
+                        "in": "query",
+                        "description": "countUnreadMessages arguments",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Returnscountofunreadmessagesfromspecificuser_0"
+            }
+        },
+        "/Messages/getChat": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Gets all messages sender to an user from specific user",
+                "summary": "Gets all messages sender to an user from specific user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "messages": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "sender": {
+                                                        "type": "string"
+                                                    },
+                                                    "to": {
+                                                        "type": "string"
+                                                    },
+                                                    "text": {
+                                                        "type": "string"
+                                                    },
+                                                    "sent": {
+                                                        "type": "string"
+                                                    },
+                                                    "read": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_Message_getChat",
+                        "in": "body",
+                        "description": "Gets all messages sender to an user from specific user",
+                        "schema": {
+                            "$ref": "#/definitions/post_Message_getChat"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Getsallmessagessendertoanuserfromspecificuser_0"
+            }
+        },
+        "/Messages/getGlobalChat": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Gets all messages sender to an user from specific user",
+                "summary": "Gets all messages sender to an user from specific user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "messages": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "sender": {
+                                                        "type": "string"
+                                                    },
+                                                    "to": {
+                                                        "type": "string"
+                                                    },
+                                                    "text": {
+                                                        "type": "string"
+                                                    },
+                                                    "sent": {
+                                                        "type": "string"
+                                                    },
+                                                    "read": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message relationships to include (csv)"
+                    },
+                    {
+                        "default": "sender,to,text,sent,read",
+                        "type": "string",
+                        "name": "fields[Message]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message fields to include (csv)"
+                    },
+                    {
+                        "name": "varargs",
+                        "in": "query",
+                        "description": "getGlobalChat arguments",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Getsallmessagessendertoanuserfromspecificuser_1"
+            }
+        },
+        "/Messages/sendMessage": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "description": "Sends message to specific chat application user",
+                "summary": "Sends message to specific chat application users",
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource"
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "post_Message_sendMessage",
+                        "in": "body",
+                        "description": "Sends message to specific chat application user",
+                        "schema": {
+                            "$ref": "#/definitions/post_Message_sendMessage"
+                        },
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "operationId": "Sendsmessagetospecificchatapplicationusers_0"
+            }
+        },
+        "/Messages/{MessageId}/": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Retrieve Message instance",
+                "parameters": [
+                    {
+                        "default": "",
+                        "type": "string",
+                        "name": "include",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message relationships to include (csv)"
+                    },
+                    {
+                        "default": "sender,to,text,sent,read",
+                        "type": "string",
+                        "name": "fields[Message]",
+                        "in": "query",
+                        "format": "string",
+                        "required": false,
+                        "description": "Message fields to include (csv)"
+                    },
+                    {
+                        "name": "MessageId",
+                        "in": "path",
+                        "type": "string",
+                        "default": 0,
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "description": "Retrieve Message from Messages",
+                "operationId": "RetrieveMessageinstance_0"
+            },
+            "patch": {
+                "tags": [
+                    "Messages"
+                ],
+                "parameters": [
+                    {
+                        "name": "MessageId",
+                        "in": "path",
+                        "type": "string",
+                        "default": 0,
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    },
+                    {
+                        "name": "PATCH body",
+                        "in": "body",
+                        "description": "Message attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_409"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst"
+                        },
+                        "description": "Request fulfilled, document follows"
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "summary": "Update Message",
+                "description": "Update Message attributes",
+                "operationId": "UpdateMessage_0"
+            },
+            "delete": {
+                "tags": [
+                    "Messages"
+                ],
+                "parameters": [
+                    {
+                        "name": "MessageId",
+                        "in": "path",
+                        "type": "string",
+                        "default": 0,
+                        "required": true
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "type": "string",
+                        "default": "application/vnd.api+json",
+                        "enum": [
+                            "application/vnd.api+json",
+                            "application/json"
+                        ],
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "204": {
+                        "description": "Request fulfilled, nothing follows"
+                    },
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Message_inst"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_403"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_404"
+                        }
+                    },
+                    "405": {
+                        "description": "Specified method is invalid for this resource",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_405"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/jsonapi_error_500"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/vnd.api+json"
+                ],
+                "summary": "Delete Message from Messages",
+                "operationId": "DeleteMessagefromMessages_0"
+            }
+        }
+    },
+    "definitions": {
+        "post_Message_broadcastMessage": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/Message_broadcastMessage"
+                }
+            },
+            "description": ""
+        },
+        "Message_broadcastMessage": {
+            "properties": {
+                "method": {
+                    "example": "broadcastMessage",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "sender": "sender",
+                        "text": "text"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_Message_countUnreadMessages": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/Message_countUnreadMessages"
+                }
+            },
+            "description": ""
+        },
+        "Message_countUnreadMessages": {
+            "properties": {
+                "method": {
+                    "example": "countUnreadMessages",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "username": "username",
+                        "chat_with": "chat_with"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_Message_getChat": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/Message_getChat"
+                }
+            },
+            "description": ""
+        },
+        "Message_getChat": {
+            "properties": {
+                "method": {
+                    "example": "getChat",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "username": "username",
+                        "chat_with": "chat_with"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "post_Message_getGlobalChat": {
+            "properties": {},
+            "description": ""
+        },
+        "post_Message_sendMessage": {
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/Message_sendMessage"
+                }
+            },
+            "description": ""
+        },
+        "Message_sendMessage": {
+            "properties": {
+                "method": {
+                    "example": "sendMessage",
+                    "type": "string"
+                },
+                "args": {
+                    "example": {
+                        "sender": "sender",
+                        "to": "to",
+                        "text": "text"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_403": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Request forbidden -- authorization will not help",
+                            "detail": "",
+                            "code": "403"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_404": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Nothing matches the given URI",
+                            "detail": "",
+                            "code": "404"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "Message_coll1": {
+            "properties": {
+                "data": {
+                    "example": [
+                        {
+                            "attributes": {
+                                "sender": "",
+                                "to": "",
+                                "text": "",
+                                "sent": "",
+                                "read": ""
+                            },
+                            "type": "Message",
+                            "id": 0,
+                            "relationships": {}
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": "Message get;"
+        },
+        "jsonapi_error_405": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Specified method is invalid for this resource",
+                            "detail": "",
+                            "code": "405"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_400": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Bad request syntax or unsupported method",
+                            "detail": "",
+                            "code": "400"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "jsonapi_error_500": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Server got itself in trouble",
+                            "detail": "",
+                            "code": "500"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "Message_inst1": {
+            "properties": {
+                "data": {
+                    "example": {
+                        "attributes": {
+                            "sender": "",
+                            "to": "",
+                            "text": "",
+                            "sent": "",
+                            "read": ""
+                        },
+                        "type": "Message"
+                    },
+                    "type": "string"
+                }
+            },
+            "description": "Message post;"
+        },
+        "jsonapi_error_409": {
+            "properties": {
+                "errors": {
+                    "example": [
+                        {
+                            "title": "Request conflict",
+                            "detail": "",
+                            "code": "409"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "Message_inst": {
+            "properties": {
+                "data": {
+                    "example": {
+                        "attributes": {
+                            "sender": "",
+                            "to": "",
+                            "text": "",
+                            "sent": "",
+                            "read": ""
+                        },
+                        "type": "Message",
+                        "id": 0
+                    },
+                    "type": "string"
+                }
+            },
+            "description": "Message patch;Message post;Message delete;Message options;Message patch;Message post;Message delete;Message options;"
+        },
+        "Invoke _Message_broadcastMessage": {
+            "properties": {}
+        },
+        "options_Message_broadcastMessage": {
+            "properties": {}
+        },
+        "Invoke _Message_countUnreadMessages": {
+            "properties": {}
+        },
+        "options_Message_countUnreadMessages": {
+            "properties": {}
+        },
+        "Invoke _Message_getChat": {
+            "properties": {}
+        },
+        "options_Message_getChat": {
+            "properties": {}
+        },
+        "Invoke _Message_getGlobalChat": {
+            "properties": {}
+        },
+        "options_Message_getGlobalChat": {
+            "properties": {}
+        },
+        "Invoke _Message_sendMessage": {
+            "properties": {}
+        },
+        "options_Message_sendMessage": {
+            "properties": {}
+        },
+        "Message_coll": {
+            "properties": {
+                "data": {
+                    "example": [
+                        {
+                            "attributes": {
+                                "sender": "",
+                                "to": "",
+                                "text": "",
+                                "sent": "",
+                                "read": ""
+                            },
+                            "type": "Message",
+                            "id": 0
+                        }
+                    ],
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "description": "Chat application Message model",
+            "name": "Messages"
+        }
+    ]
+}
