@@ -201,7 +201,6 @@ class Message(SAFRSBase, database.Model):
                 text: text
         """
         sentDate = datetime.now().strftime("%d.%m.%y, %H:%M")
-        print(sentDate)
         message = Message(sender=sender, to=to, text=text, sent=sentDate)
         database.session.commit()
         socketio.emit("message", {"sender": sender, "to": to})
@@ -328,7 +327,7 @@ class Message(SAFRSBase, database.Model):
         return result
 
     @classmethod
-    @jsonapi_rpc(http_methods=['GET'])
+    @jsonapi_rpc(http_methods=['POST'])
     def countUnreadMessages(cls, username, chat_with):
         """
             description: Returns count of unread messages from specific user
@@ -336,6 +335,20 @@ class Message(SAFRSBase, database.Model):
             args:
                 username: username
                 chat_with: chat_with
+            responses:
+                200:
+                    description: OK
+                    schema:
+                        type: object
+                        properties:
+                            meta:
+                                type: object
+                                properties:
+                                    result:
+                                        type: object
+                                        properties:
+                                            result:
+                                                type: string
         """
 
         unread = 0

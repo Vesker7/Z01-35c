@@ -299,7 +299,7 @@
             }
         },
         "/Messages/countUnreadMessages": {
-            "get": {
+            "post": {
                 "tags": [
                     "Messages"
                 ],
@@ -307,7 +307,25 @@
                 "summary": "Returns count of unread messages from specific user",
                 "responses": {
                     "200": {
-                        "description": "Request fulfilled, document follows"
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "405": {
                         "description": "Specified method is invalid for this resource"
@@ -321,29 +339,13 @@
                 },
                 "parameters": [
                     {
-                        "default": "",
-                        "type": "string",
-                        "name": "include",
-                        "in": "query",
-                        "format": "string",
-                        "required": false,
-                        "description": "Message relationships to include (csv)"
-                    },
-                    {
-                        "default": "sender,to,text,sent,read",
-                        "type": "string",
-                        "name": "fields[Message]",
-                        "in": "query",
-                        "format": "string",
-                        "required": false,
-                        "description": "Message fields to include (csv)"
-                    },
-                    {
-                        "name": "varargs",
-                        "in": "query",
-                        "description": "countUnreadMessages arguments",
-                        "required": false,
-                        "type": "string"
+                        "name": "post_Message_countUnreadMessages",
+                        "in": "body",
+                        "description": "Returns count of unread messages from specific user",
+                        "schema": {
+                            "$ref": "#/definitions/post_Message_countUnreadMessages"
+                        },
+                        "required": true
                     }
                 ],
                 "produces": [
@@ -373,6 +375,9 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
                                                     "sender": {
                                                         "type": "string"
                                                     },
@@ -444,6 +449,9 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
                                                     "sender": {
                                                         "type": "string"
                                                     },
