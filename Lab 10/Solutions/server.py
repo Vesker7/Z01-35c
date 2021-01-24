@@ -49,7 +49,7 @@ class User(SAFRSBase, database.Model):
             user.status = "Online"
             database.session.add(user)
             database.session.commit()
-            socketio.emit("login")
+            socketio.emit("loginSignal", {"user": username})
             return {"result": "success"}
 
     @classmethod
@@ -83,7 +83,7 @@ class User(SAFRSBase, database.Model):
             user.status = "Offline"
             database.session.add(user)
             database.session.commit()
-            socketio.emit("login")
+            socketio.emit("loginSignal", {"user": username})
             return {"result": "success"}
 
     @classmethod
@@ -118,7 +118,7 @@ class User(SAFRSBase, database.Model):
         user = User(username=username, password=password)
 
         database.session.commit()
-        socketio.emit("login")
+        socketio.emit("loginSignal", {"user": username})
         return {"result": "success"}
 
     @classmethod
@@ -151,7 +151,7 @@ class User(SAFRSBase, database.Model):
         """
 
         result = {"users": []}
-        for user in database.session.query(User).all():
+        for user in database.session.query(User).order_by("status").all()[::-1]:
             temp = {
                 "username": user.username,
                 "status": user.status
@@ -224,23 +224,26 @@ class Message(SAFRSBase, database.Model):
                             meta:
                                 type: object
                                 properties:
-                                    messages:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                sender:
-                                                    type: string
-                                                to:
-                                                    type: string
-                                                text:
-                                                    type: string
-                                                sent:
-                                                    type: string
-                                                read:
-                                                    type: string
+                                    result:
+                                        type: object
+                                        properties:
+                                            messages:
+                                                type: array
+                                                items:
+                                                    type: object
+                                                    properties:
+                                                        id:
+                                                            type: integer
+                                                        sender:
+                                                            type: string
+                                                        to:
+                                                            type: string
+                                                        text:
+                                                            type: string
+                                                        sent:
+                                                            type: string
+                                                        read:
+                                                            type: string
         """
 
         result = {"messages": []}
@@ -290,23 +293,26 @@ class Message(SAFRSBase, database.Model):
                             meta:
                                 type: object
                                 properties:
-                                    messages:
-                                        type: array
-                                        items:
-                                            type: object
-                                            properties:
-                                                id:
-                                                    type: integer
-                                                sender:
-                                                    type: string
-                                                to:
-                                                    type: string
-                                                text:
-                                                    type: string
-                                                sent:
-                                                    type: string
-                                                read:
-                                                    type: string
+                                    result:
+                                        type: object
+                                        properties:
+                                            messages:
+                                                type: array
+                                                items:
+                                                    type: object
+                                                    properties:
+                                                        id:
+                                                            type: integer
+                                                        sender:
+                                                            type: string
+                                                        to:
+                                                            type: string
+                                                        text:
+                                                            type: string
+                                                        sent:
+                                                            type: string
+                                                        read:
+                                                            type: string
         """
 
         result = {"messages": []}

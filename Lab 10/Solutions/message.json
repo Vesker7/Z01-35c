@@ -370,28 +370,33 @@
                                 "meta": {
                                     "type": "object",
                                     "properties": {
-                                        "messages": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer"
-                                                    },
-                                                    "sender": {
-                                                        "type": "string"
-                                                    },
-                                                    "to": {
-                                                        "type": "string"
-                                                    },
-                                                    "text": {
-                                                        "type": "string"
-                                                    },
-                                                    "sent": {
-                                                        "type": "string"
-                                                    },
-                                                    "read": {
-                                                        "type": "string"
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "sender": {
+                                                                "type": "string"
+                                                            },
+                                                            "to": {
+                                                                "type": "string"
+                                                            },
+                                                            "text": {
+                                                                "type": "string"
+                                                            },
+                                                            "sent": {
+                                                                "type": "string"
+                                                            },
+                                                            "read": {
+                                                                "type": "string"
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -444,28 +449,33 @@
                                 "meta": {
                                     "type": "object",
                                     "properties": {
-                                        "messages": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer"
-                                                    },
-                                                    "sender": {
-                                                        "type": "string"
-                                                    },
-                                                    "to": {
-                                                        "type": "string"
-                                                    },
-                                                    "text": {
-                                                        "type": "string"
-                                                    },
-                                                    "sent": {
-                                                        "type": "string"
-                                                    },
-                                                    "read": {
-                                                        "type": "string"
+                                        "result": {
+                                            "type": "object",
+                                            "properties": {
+                                                "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "sender": {
+                                                                "type": "string"
+                                                            },
+                                                            "to": {
+                                                                "type": "string"
+                                                            },
+                                                            "text": {
+                                                                "type": "string"
+                                                            },
+                                                            "sent": {
+                                                                "type": "string"
+                                                            },
+                                                            "read": {
+                                                                "type": "string"
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
